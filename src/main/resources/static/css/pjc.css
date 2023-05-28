@@ -1,0 +1,27 @@
+@charset "UTF-8";
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* 테이블 내용이 길어질 경우, 일정 길이 이상은 생략되도록 설정 */
+td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px; /* 생략되는 글자 수에 따라 조절 가능 */
+}

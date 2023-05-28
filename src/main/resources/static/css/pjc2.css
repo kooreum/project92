@@ -1,0 +1,56 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+@media (max-width: 600px) {
+    th, td {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+
+textarea {
+    width: 100%;
+    max-width: 800px; /* 최대 너비 */
+    min-width: 400px; /* 최소 너비 */
+    padding: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical; /* 수직 리사이즈 활성화 */
+}
+td[colspan="5"] {
+    text-align: right;
+}
+
+#submitBtn {
+    margin-left: 10px;
+}
+
+
+
+
