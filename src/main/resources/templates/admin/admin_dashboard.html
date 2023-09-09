@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/default}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="_csrf" th:content="${_csrf.token}"/>
+  <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+
+<th:block layout:fragment="customJs">
+  <script th:inline="javascript">
+
+  </script>
+</th:block>
+
+<th:block layout:fragment="customContent">
+  <div class="container mt-5">
+    <div class="row">
+      <!-- New Document Upload Section -->
+      <div class="col-lg-4 mt-4">
+        <div class="d-flex align-items-center mb-3">
+          <img src="/images/file-earmark-plus.svg" alt="아이콘" class="mr-3">
+          <h2>신규 문서 업로드</h2>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item" th:each="dul : ${documentUploadList}" th:if="${dul.type == 2}">
+            <a href="#">
+              <span th:text="${dul.msg}">[한일] 파이온 모기살충제</span>
+              <small class="float-right" th:text="${dul.formattedRDate}">2023.05.11</small>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Document Modify Upload Section -->
+      <div class="col-lg-4 mt-4">
+        <div class="d-flex align-items-center mb-3">
+          <img src="/images/file-arrow-up-fill.svg" alt="아이콘" class="mr-3">
+          <h2>문서 수정 업로드</h2>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item" th:each="dml : ${documentModifyList}" th:if="${dml.type == 3}">
+            <a href="#">
+              <span th:text="${dml.msg}">[한일] 파이온 모기살충제</span>
+              <small class="float-right" th:text="${dml.formattedRDate}">2023.05.11</small>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Request Email List Section -->
+      <div class="col-lg-4 mt-4">
+        <div class="d-flex align-items-center mb-3">
+          <img src="/images/envelope-exclamation-fill.svg" alt="아이콘" class="mr-3">
+          <h2>요청 메일 목록</h2>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item" th:each="rel : ${requestEmailList}" th:if="${rel.type == 1}">
+            <a href="#">
+              <span th:text="${rel.msg}">[한일] 파이온 모기살충제</span>
+              <small class="float-right" th:text="${rel.formattedRDate}">2023.05.11</small>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</th:block>
+</html>
