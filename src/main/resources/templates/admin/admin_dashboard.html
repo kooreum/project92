@@ -14,6 +14,7 @@
 </th:block>
 
 <th:block layout:fragment="customContent">
+
   <div class="container mt-5">
     <div class="row">
       <!-- New Document Upload Section -->
@@ -25,8 +26,8 @@
         <ul class="list-group">
           <li class="list-group-item" th:each="dul : ${documentUploadList}" th:if="${dul.type == 2}">
             <a href="#">
-              <span th:text="${dul.msg}">[한일] 파이온 모기살충제</span>
-              <small class="float-right" th:text="${dul.formattedRDate}">2023.05.11</small>
+              <span th:text="${dul.msg}"></span>
+              <small class="float-right" th:text="${dul.formattedRDate}"></small>
             </a>
           </li>
         </ul>
@@ -42,7 +43,7 @@
           <li class="list-group-item" th:each="dml : ${documentModifyList}" th:if="${dml.type == 3}">
             <a href="#">
               <span th:text="${dml.msg}">[한일] 파이온 모기살충제</span>
-              <small class="float-right" th:text="${dml.formattedRDate}">2023.05.11</small>
+              <small class="float-right" th:text="${dml.formattedRDate}"></small>
             </a>
           </li>
         </ul>
@@ -57,8 +58,8 @@
         <ul class="list-group">
           <li class="list-group-item" th:each="rel : ${requestEmailList}" th:if="${rel.type == 1}">
             <a href="#">
-              <span th:text="${rel.msg}">[한일] 파이온 모기살충제</span>
-              <small class="float-right" th:text="${rel.formattedRDate}">2023.05.11</small>
+              <span th:text="${rel.msg}"></span>
+              <small class="float-right" th:text="${rel.formattedRDate}"></small>
             </a>
           </li>
         </ul>

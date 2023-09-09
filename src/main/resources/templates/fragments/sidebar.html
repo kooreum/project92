@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
 
 <div class="main_menu_side hidden-print main_menu" id="sidebar-menu" th:fragment="sidebarFragment">
-  <div class="menu_section">
 
+  <div class="menu_section" sec:authorize="hasRole('ADMIN')">
     <ul class="nav side-menu">
-      <li><a><i class="fa fa-home"></i> Home
-        <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="#">소개</a></li>
-          <li><a href="#">공지사항</a></li>
-        </ul>
-      </li>
+      <li><a href="#" th:href="@{/admin}"><i class="fa fa-dashboard"></i> 대시보드</a></li>
     </ul>
-
-    <ul class="nav side-menu">
-      <li><a><i class="fa fa-adn"></i> 관리자페이지
-        <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="#" th:href="@{/admin/userView}"> 회원 관리</a></li>
-        </ul>
-      </li>
-    </ul>
-
-
   </div>
+
+  <div class="menu_section" sec:authorize="hasRole('MANAGER')">
+    <ul class="nav side-menu">
+      <li><a href="#" th:href="@{/manager}"><i class="fa fa-dashboard"></i> 대시보드</a></li>
+    </ul>
+  </div>
+
+  <div class="menu_section" sec:authorize="hasRole('SUPPLIER')">
+    <ul class="nav side-menu">
+      <li><a href="#" th:href="@{/supplier}"><i class="fa fa-dashboard"></i> 대시보드</a></li>
+    </ul>
+  </div>
+
 </div>
 </html>

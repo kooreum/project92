@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/default}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="_csrf" th:content="${_csrf.token}"/>
+  <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+
+<th:block layout:fragment="customJs">
+  <script th:inline="javascript">
+  </script>
+</th:block>
+
+<th:block layout:fragment="customContent">
+  <div class="content">
+    <h2>
+      <img th:src="@{/build/img/users.svg}" alt="아이콘"/>
+      <span></span>
+    </h2>
+    <div class="filter_wrap">
+      <div class="form">
+
+        <form method="get" th:action="@{/admin/members}">
+          <div>
+								<span class="icon">
+									<img th:src="@{/build/img/location.svg}" alt="아이콘"/>
+								</span>
+            <span class="tit">회사명</span>
+            <div class="input_box">
+              <input type="text" id="company" name="company" />
+            </div>
+          </div>
+          <div>
+								<span class="icon">
+									<img th:src="@{/build/img/user_01.svg}" alt="아이콘"/>
+								</span>
+            <span class="tit">담당자</span>
+            <div class="input_box">
+              <input type="text" id="name" name="name" />
+            </div>
+          </div>
+          <div>
+								<span class="icon">
+									<img th:src="@{/build/img/timer.svg}" alt="아이콘"/>
+								</span>
+            <span class="tit">현재상태</span>
+            <div class="select_box">
+              <select id="status" name="status">
+                <option value="">-- 선택 --</option>
+                <option value=1>Y</option>
+                <option value=0>N</option>
+              </select>
+            </div>
+            <button type="submit" class="btn_submit" style="width:100px;color:white;">
+              <img th:src="@{/build/img/search_white.svg}" alt="검색"/> Search
+            </button>
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+          </div>
+        </form>
+
+      </div>
+    </div>
+    <div class="table_wrap">
+      <div class="head">
+        <h3 th:text="Total + ' ' + ${totalCount}">Total 210</h3>
+        <div class="btn_wrap">
+          <button type="button" class="btn btn_blue manager_add_pop_open">
+            <img th:src="@{/build/img/pencil.svg}" alt="아이콘"/>
+            <span>등록</span>
+          </button>
+        </div>
+      </div>
+      <table>
+
+        <thead>
+        <tr>
+          <th>
+            <span>No</span>
+          </th>
+          <th>
+            <img th:src="@{/build/img/table_location.svg}" alf="아이콘"/>
+            <span>회사명</span>
+          </th>
+          <th>
+            <img th:src="@{/build/img/table_user.svg}" alf="아이콘"/>
+            <span>담당자명</span>
+          </th>
+          <th>
+            <span>국가</span>
+          </th>
+          <th>
+            <img th:src="@{/build/img/table_phone.svg}" alf="아이콘"/>
+            <span>전화번호</span>
+          </th>
+          <th>
+            <span>권한</span>
+          </th>
+          <th>
+            <span>공급자수</span>
+          </th>
+          <th>
+            <span>등록일</span>
+          </th>
+          <th>
+            <span>현재상태</span>
+          </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="member, iterStat : ${memberList}">
+          <td data-key="id" class="hidden-col">
+            <div>
+              <span th:text="${member.id}">id</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span th:text="${totalCount - (currentPage - 1) * 10 - iterStat.index}">desc</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span class="updateModal" th:data-id="${member.id}" th:text="${member.company}"
+                    style="color: red; cursor:pointer">국제상사</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span th:text="${member.name}">김기업</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span th:text="${member.country}">국가</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span th:text="${member.tel}">010-1234-5678</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span th:text="${member.levelMsg}">기업담당자</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span th:text="${member.cnt}">10</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span th:text="${member.formattedRDate}">2021-01-01</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span th:class="${member.statusMsg == 'Y'} ? 'status yes' : 'status no'"
+                    th:text="${member.statusMsg}"></span>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <a href="#" th:href="@{/admin/members(page=1)}" class="page_start">
+        <span>1</span>
+        <img th:src="@{/build/img/page_start.svg}" alt="처음"/>
+      </a>
+
+      <!-- Display link to previous page -->
+      <a href="#" th:href="@{/admin/members(page=${currentPage > 1 ? currentPage - 1 : 1})}"
+         class="page_prev">
+        <img th:src="@{/build/img/page_prev.svg}" alt="이전"/>
+      </a>
+
+      <!-- Display links to individual pages -->
+      <th:block th:each="i : ${#numbers.sequence(startPage, endPage)}">
+        <a href="#" th:href="@{/admin/members(page=${i}, company=${searchParameters.company}, name=${searchParameters.name}, tel=${searchParameters.tel}, status=${searchParameters.status})}"
+           th:class="${i == currentPage ? 'active bold' : ''}">
+          <span th:text="${i}"></span>
+        </a>
+      </th:block>
+
+      <!-- Display link to next page -->
+      <a href="#"
+         th:href="@{/admin/members(page=${currentPage < totalPages ? currentPage + 1 : totalPages})}"
+         class="page_next">
+        <img th:src="@{/build/img/page_next.svg}" alt="다음"/>
+      </a>
+
+      <!-- Display link to last page -->
+      <a href="#" class="page_end" th:href="@{/admin/members(page=${totalPages})}">
+        <img th:src="@{/build/img/page_end.svg}" alt="끝"/>
+        <span th:text="${totalPages}"></span>
+      </a>
+    </div>
+  </div>
+
+    </div>
+  </div>
+</th:block>
+</html>

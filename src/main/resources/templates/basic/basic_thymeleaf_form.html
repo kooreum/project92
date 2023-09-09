@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/default}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="_csrf" th:content="${_csrf.token}"/>
+  <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+
+<th:block layout:fragment="customJs">
+  <script th:inline="javascript">
+  </script>
+</th:block>
+
+<th:block layout:fragment="customContent">
+
+</th:block>
+</html>
