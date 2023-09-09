@@ -8,6 +8,9 @@
     <ul class="nav side-menu">
       <li><a href="#" th:href="@{/admin}"><i class="fa fa-dashboard"></i> 대시보드</a></li>
     </ul>
+    <ul class="nav side-menu">
+      <li><a href="#" th:href="@{/admin/members}"><i class="fa fa-dashboard"></i> 매니저관리</a></li>
+    </ul>
   </div>
 
   <div class="menu_section" sec:authorize="hasRole('MANAGER')">
