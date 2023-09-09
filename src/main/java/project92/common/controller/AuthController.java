@@ -12,6 +12,6 @@ public class AuthController {
     // 로그인 화면
     @GetMapping("/login")
     public String login() {
-        return "members/login";
+        return "auth/login";
     }
 }

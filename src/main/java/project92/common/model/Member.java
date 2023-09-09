@@ -23,7 +23,7 @@ public class Member {
         private String name;
         private String email;
         private String mobile;
-        private Integer level;
+        private Levels Level;
         private Integer status;
         private LocalDateTime rdate;
         private LocalDateTime ldate;
