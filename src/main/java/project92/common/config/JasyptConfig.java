@@ -1,4 +1,4 @@
-package project92.user.config;
+package project92.common.config;
 
 import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;

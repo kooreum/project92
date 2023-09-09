@@ -32,13 +32,13 @@
     <div class="login_wrapper">
       <div class="animate form login_form">
         <section class="login_content">
-          <form th:action="@{/users/login}" method="post">
+          <form th:action="@{/auth/login}" method="post">
             <div id="error-alert" class="alert alert-danger" style="display: none;">
               <p></p>
             </div>
             <h1>로그인</h1>
             <div>
-              <input type="text" class="form-control" placeholder="아이디" required="" name="username" value="user1"/>
+              <input type="text" class="form-control" placeholder="아이디" required="" name="id" value="user1"/>
             </div>
             <div>
               <input type="password" class="form-control" placeholder="비밀번호" required="" name="password" value="user123"/>
@@ -47,7 +47,7 @@
               <button type="submit" class="btn btn-primary w-100">로그인</button>
             </div>
             <div class="mt-2">
-              <a class="btn btn-primary w-100" th:href="@{/users/findPassword}">비밀번호 찾기</a>
+              <a class="btn btn-primary w-100" th:href="@{/templates/members/findPassword}">비밀번호 찾기</a>
             </div>
 
 
@@ -55,7 +55,7 @@
 
             <div class="separator">
               <p class="change_link">처음 방문이십니까?
-                <a class="to_register" th:href="@{/users/register}"> 회원가입 </a>
+                <a class="to_register" th:href="@{/templates/members/register}"> 회원가입 </a>
               </p>
 
               <div class="clearfix"></div>

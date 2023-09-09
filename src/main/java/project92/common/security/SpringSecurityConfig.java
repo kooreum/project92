@@ -1,4 +1,4 @@
-package project92.user.config;
+package project92.common.security;
 
 import jakarta.servlet.DispatcherType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +10,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class SpringSecurityConfig {
@@ -35,27 +36,31 @@ public class SpringSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable().cors().disable()
+        http
+                // csrf 토큰 사용
+                .csrf()
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                .and()
+                .cors().disable()
                 .authorizeHttpRequests(request -> request
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
                         .requestMatchers("/build/**", "/images/**", "/css/**", "/js/**", "/vendors/**",
-                                "/users/login", "/users/register", "/users/idCheck", "/users/findPassword").permitAll()
+                                "/members/login", "/members/register", "/members/idCheck", "/members/findPassword").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/company/**").hasAnyRole("ADMIN", "USER")
-                        .requestMatchers("/warehouse/**").hasAnyRole("ADMIN", "USER")
-                        .requestMatchers("/inventory/**").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
-                        .loginPage("/users/login")	// [A] 커스텀 로그인 페이지 지정
-                        .loginProcessingUrl("/users/login")	// [B] submit 받을 url
-                        .usernameParameter("username")	// [C] submit할 아이디 view name=username
+                        .loginPage("/auth/login")	// [A] 커스텀 로그인 페이지 지정
+                        .loginProcessingUrl("/auth/login")	// [B] submit 받을 url
+                        .usernameParameter("id")	// [C] submit할 아이디 view name=username
                         .passwordParameter("password")	// [D] submit할 비밀번호 view password=password
                         .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
                 // default -> post (/logout)
-                .logout(withDefaults());
+                //csrf 토큰시 AntPathRequestMatcher("/logout") 사용
+                .logout(logout -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout")));
 
         return http.build();
     }

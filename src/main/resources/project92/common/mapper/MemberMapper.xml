@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project92.common.mapper.MemberMapper">
+
+    <resultMap id="memberResultMap" type="Member">
+        <result property="id" column="ID" />
+        <result property="adminId" column="ADMIN_ID" />
+        <result property="managerId" column="MANAGER_ID" />
+        <result property="password" column="PASSWORD" />
+        <result property="company" column="COMPANY" />
+        <result property="name" column="NAME" />
+        <result property="email" column="EMAIL" />
+        <result property="mobile" column="MOBILE" />
+        <result property="level" column="LEVEL" />
+        <result property="status" column="STATUS" />
+        <result property="rdate" column="RDATE" />
+        <result property="ldate" column="LDATE" />
+    </resultMap>
+
+
+    <select id="findById" resultMap="memberResultMap">
+        select * from member where id = #{id}
+    </select>
+</mapper>
