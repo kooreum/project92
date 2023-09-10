@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project92.admin.mapper.AdminMemberMapper">
+
+    <resultMap id="memberResultMap" type="Member">
+        <result property="id" column="ID"/>
+        <result property="adminId" column="ADMIN_ID"/>
+        <result property="managerId" column="MANAGER_ID"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="company" column="COMPANY"/>
+        <result property="name" column="NAME"/>
+        <result property="email" column="EMAIL"/>
+        <result property="mobile" column="MOBILE"/>
+        <result property="level" column="LEVEL"/>
+        <result property="status" column="STATUS"/>
+        <result property="rdate" column="RDATE"/>
+        <result property="ldate" column="LDATE"/>
+    </resultMap>
+
+    <sql id="search">
+        <if test="company != null and !company.equals('') or
+                  name != null and !name.equals('') or
+                  tel != null and !tel.equals('')">
+            AND (
+            <choose>
+                <when test="company != null and !company.equals('')">
+                    A.COMPANY LIKE CONCAT('%', #{company}, '%')
+                    <if test="name != null and !name.equals('')">
+                        OR A.NAME LIKE CONCAT('%', #{name}, '%')
+                    </if>
+                    <if test="mobile != null and !mobile.equals('')">
+                        OR A.MOBILE LIKE CONCAT('%', #{mobile}, '%')
+                    </if>
+                </when>
+                <when test="name != null and !name.equals('')">
+                    A.NAME LIKE CONCAT('%', #{name}, '%')
+                    <if test="mobile != null and !mobile.equals('')">
+                        OR A.MOBILE LIKE CONCAT('%', #{mobile}, '%')
+                    </if>
+                </when>
+                <otherwise>
+                    <if test="mobile != null and !mobile.equals('')">
+                        OR A.MOBILE LIKE CONCAT('%', #{mobile}, '%')
+                    </if>
+                </otherwise>
+            </choose>
+            )
+        </if>
+        <if test="status != null and !status.equals('')">
+            AND A.STATUS = #{status}
+        </if>
+    </sql>
+
+
+    <!-- 기업 관리자 검색 -->
+    <select id="selectMembersByAdminId" parameterType="map" resultType="Member">
+        SELECT
+        ID,
+        ADMIN_ID,
+        MANAGER_ID,
+        PASSWORD,
+        COMPANY,
+        NAME,
+        EMAIL,
+        MOBILE,
+        CASE when LEVEL = 'MANAGER'
+        then '담당자'
+        when LEVEL = 'SUPPLIER'
+        then '공급자'
+        when LEVEL = 'ADMIN'
+        then '관리자'
+        ELSE ''
+        END as level,
+        CASE when STATUS = 0
+        then 'N'
+        when STATUS = 1
+        then 'Y'
+        else ''
+        END as status,
+        RDATE,
+        LDATE,
+        (select count(*) from MEMBERS where MANAGER_ID = A.ID and LEVEL = 'MANAGER') as cnt
+        FROM MEMBERS A WHERE A.ADMIN_ID = #{adminId}
+        <include refid="search"/>
+        order by A.RDATE DESC limit #{offset}, 10
+    </select>
+
+    <!-- Member 값 카운트 -->
+    <select id="selectMembersByCount" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM MEMBERS A WHERE A.ADMIN_ID = #{adminId}
+        <include refid="search"/>
+    </select>
+</mapper>
