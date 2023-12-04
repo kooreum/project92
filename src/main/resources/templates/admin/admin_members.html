@@ -21,25 +21,16 @@
       <form class="form-inline" method="get" th:action="@{/admin/members}">
         <div class="form-group mr-3">
           <img alt="아이콘" class="mr-1" th:src="@{/images/building.svg}"/>
-          <label class="mr-1" for="company">회사명</label>
+          <label class="mr-1" for="company">동네</label>
           <input class="form-control" id="company" name="company" type="text"/>
         </div>
         <div class="form-group mr-3">
           <img alt="아이콘" class="mr-1" th:src="@{/images/person.svg}"/>
-          <label class="mr-1" for="name">담당자</label>
+          <label class="mr-1" for="name">이름</label>
           <input class="form-control" id="name" name="name" type="text"/>
         </div>
-        <div class="form-group mr-3">
-          <img alt="아이콘" class="mr-1" th:src="@{/images/person-check.svg}"/>
-          <label class="mr-1" for="status">현재상태</label>
-          <select class="form-control" id="status" name="status">
-            <option value="">-- 선택 --</option>
-            <option value=1>Y</option>
-            <option value=0>N</option>
-          </select>
-        </div>
         <button class="btn btn-light" type="submit">
-          <img alt="검색" th:src="@{/images/search.svg}"/> Search
+          <img alt="검색" th:src="@{/images/search.svg}"/> 검색
         </button>
         <input name="_csrf" type="hidden" value="${_csrf.token}"/>
       </form>
@@ -61,31 +52,19 @@
           </th>
           <th>
             <img alt="아이콘" th:src="@{/images/building.svg}"/>
-            <span>회사명</span>
+            <span>동네</span>
           </th>
           <th>
             <img alt="아이콘" th:src="@{/images/person.svg}"/>
-            <span>담당자명</span>
-          </th>
-          <th>
-            <img alt="아이콘" th:src="@{/images/globe2.svg}"/>
-            <span>국가</span>
+            <span>이름</span>
           </th>
           <th>
             <img alt="아이콘" th:src="@{/images/telephone.svg}"/>
             <span>전화번호</span>
           </th>
           <th>
-            <img alt="아이콘" th:src="@{/images/clipboard2-check.svg}"/>
-            <span>권한</span>
-          </th>
-          <th>
-            <img alt="아이콘" th:src="@{/images/people.svg}"/>
-            <span>공급자수</span>
-          </th>
-          <th>
             <img alt="아이콘" th:src="@{/images/calendar3.svg}"/>
-            <span>등록일</span>
+            <span>가입날짜</span>
           </th>
           <th>
             <img alt="아이콘" th:src="@{/images/person-check.svg}"/>
