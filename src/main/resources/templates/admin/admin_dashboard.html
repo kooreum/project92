@@ -21,7 +21,7 @@
       <div class="col-lg-4 mt-4">
         <div class="d-flex align-items-center mb-3">
           <img src="/images/file-earmark-plus.svg" alt="아이콘" class="mr-3">
-          <h2>신규 문서 업로드</h2>
+          <h2>맛집 공유</h2>
         </div>
         <ul class="list-group">
           <li class="list-group-item" th:each="dul : ${documentUploadList}" th:if="${dul.type == 2}">
@@ -37,7 +37,7 @@
       <div class="col-lg-4 mt-4">
         <div class="d-flex align-items-center mb-3">
           <img src="/images/file-arrow-up-fill.svg" alt="아이콘" class="mr-3">
-          <h2>문서 수정 업로드</h2>
+          <h2>특가 공유</h2>
         </div>
         <ul class="list-group">
           <li class="list-group-item" th:each="dml : ${documentModifyList}" th:if="${dml.type == 3}">
@@ -53,7 +53,7 @@
       <div class="col-lg-4 mt-4">
         <div class="d-flex align-items-center mb-3">
           <img src="/images/envelope-exclamation-fill.svg" alt="아이콘" class="mr-3">
-          <h2>요청 메일 목록</h2>
+          <h2>우리동네 꿀팁</h2>
         </div>
         <ul class="list-group">
           <li class="list-group-item" th:each="rel : ${requestEmailList}" th:if="${rel.type == 1}">

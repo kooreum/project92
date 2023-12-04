@@ -6,22 +6,22 @@
 
   <div class="menu_section" sec:authorize="hasRole('ADMIN')">
     <ul class="nav side-menu">
-      <li><a href="#" th:href="@{/admin}"><i class="fa fa-dashboard"></i> 대시보드</a></li>
+      <li><a href="#" th:href="@{/admin}"><i class="fa fa-dashboard"></i> 동네공유</a></li>
     </ul>
     <ul class="nav side-menu">
-      <li><a href="#" th:href="@{/admin/members}"><i class="fa fa-dashboard"></i> 매니저관리</a></li>
+      <li><a href="#" th:href="@{/admin/members}"><i class="fa fa-dashboard"></i> 회원관리</a></li>
     </ul>
   </div>
 
   <div class="menu_section" sec:authorize="hasRole('MANAGER')">
     <ul class="nav side-menu">
-      <li><a href="#" th:href="@{/manager}"><i class="fa fa-dashboard"></i> 대시보드</a></li>
+      <li><a href="#" th:href="@{/manager}"><i class="fa fa-dashboard"></i> 동네공유</a></li>
     </ul>
   </div>
 
   <div class="menu_section" sec:authorize="hasRole('SUPPLIER')">
     <ul class="nav side-menu">
-      <li><a href="#" th:href="@{/supplier}"><i class="fa fa-dashboard"></i> 대시보드</a></li>
+      <li><a href="#" th:href="@{/supplier}"><i class="fa fa-dashboard"></i> 동네공유</a></li>
     </ul>
   </div>
 
