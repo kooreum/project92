@@ -10,8 +10,12 @@ public class CommonController {
 
 
 	@GetMapping("/")
-	public String redirectToDashboard() {
+	public String home() {
 		return "layout/default";
 	}
 
+	@GetMapping("/login")
+	public String loginPage() {
+		return "auth/login";
+	}
 }
