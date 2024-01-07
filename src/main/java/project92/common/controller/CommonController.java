@@ -11,11 +11,16 @@ public class CommonController {
 
 	@GetMapping("/")
 	public String home() {
-		return "layout/default";
+		return "main";
 	}
 
 	@GetMapping("/login")
 	public String loginPage() {
 		return "auth/login";
+	}
+
+	@GetMapping("/signUp")
+	public String joinPage() {
+		return "auth/signUp";
 	}
 }

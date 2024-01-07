@@ -7,26 +7,19 @@ import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @ToString
 public class Member {
 
         private String id;
-        private String adminId;
-        private String managerId;
         private String password;
         private String confirmPasswd;
-        private String dePassword;
-        private String company;
         private String name;
         private String email;
         private String mobile;
         private Levels Level;
         private Integer status;
-        private LocalDateTime rdate;
-        private LocalDateTime ldate;
+        private LocalDateTime rdate; //최근로그인시간
+        private LocalDateTime ldate; //마지막로그아웃시간
 
         public String getFormattedRDate() {
                 if (rdate != null) {

@@ -2,35 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-  <!-- Meta, title, CSS, favicons, etc. -->
-  <meta charset="utf-8">
-  <meta content="IE=edge" http-equiv="X-UA-Compatible">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
 
-  <title>login</title>
+    <title>login</title>
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet"
-        th:href="@{/vendors/bootstrap/dist/css/bootstrap.min.css}">
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-        th:href="@{/vendors/font-awesome/css/font-awesome.min.css}">
-  <!-- NProgress -->
-  <link rel="stylesheet" th:href="@{/vendors/nprogress/nprogress.css}">
-  <!-- Dropzone.js -->
-  <link rel="stylesheet" th:href="@{/vendors/dropzone/dist/min/dropzone.min.css}">
-  <!-- DataTables -->
-  <link rel="stylesheet" th:href="@{/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css}">
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          th:href="@{/vendors/bootstrap/dist/css/bootstrap.min.css}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          th:href="@{/vendors/font-awesome/css/font-awesome.min.css}">
+    <!-- NProgress -->
+    <link rel="stylesheet" th:href="@{/vendors/nprogress/nprogress.css}">
+    <!-- Dropzone.js -->
+    <link rel="stylesheet" th:href="@{/vendors/dropzone/dist/min/dropzone.min.css}">
+    <!-- DataTables -->
+    <link rel="stylesheet" th:href="@{/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css}">
 
-  <!-- Custom Theme Style -->
-  <link rel="stylesheet" th:href="@{/build/css/custom.min.css}">
+    <!-- Custom Theme Style -->
+    <link rel="stylesheet" th:href="@{/build/css/custom.min.css}">
 
-  <style>
-    body {
-        background-color: white;
-    }
-  </style>
+    <style>
+        body {
+            background-color: white;
+        }
+    </style>
 </head>
 
 <!-- jQuery -->
@@ -65,47 +65,50 @@
 
 <body>
 <div>
-  <a class="hiddenanchor" id="signup"></a>
-  <a class="hiddenanchor" id="signin"></a>
+    <a class="hiddenanchor" id="signup"></a>
+    <a class="hiddenanchor" id="signin"></a>
 
-  <div class="login_wrapper">
-    <div class="animate form login_form">
-      <section class="login_content">
-        <form method="post" th:action="@{/auth/login}">
-          <div class="alert alert-danger" id="error-alert" style="display: none;">
-            <p></p>
-          </div>
-          <h1>로그인</h1>
-          <div>
-            <input class="form-control" name="id" placeholder="아이디" required="" type="text" value="admin"/>
-          </div>
-          <div>
-            <input class="form-control" name="password" placeholder="비밀번호" required="" type="password" value="123123"/>
-          </div>
-          <div>
-            <button class="btn btn-primary w-100" type="submit">로그인</button>
-          </div>
-          <div class="mt-2">
-            <a class="btn btn-primary w-100" th:href="@{/templates/auth/findPassword}">비밀번호 찾기</a>
-          </div>
+    <div class="login_wrapper">
+        <div class="animate form login_form">
+            <section class="login_content">
+                <form method="post" th:action="@{/auth/login}">
+                    <h1>로그인</h1>
+                    <div>
+                        <input class="form-control" name="id" placeholder="아이디" required="" type="text" value="admin"/>
+                    </div>
+                    <div>
+                        <input class="form-control" name="password" placeholder="비밀번호" required="" type="password"
+                               value="123123"/>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary w-100" type="submit">로그인</button>
+                    </div>
+                </form>
+                <div>
+                    <button class="btn btn-primary w-100" th:onclick="|location.href='@{/signUp}'|">회원가입</button>
+                </div>
+                <div>
+                    <button class="btn btn-primary w-100" th:onclick="|location.href='@{/signUp}'|">비밀번호 찾기</button>
+                </div>
+                <div class="clearfix"></div>
 
+                <div class="separator">
 
-          <div class="clearfix"></div>
+                    <div class="clearfix"></div>
+                    <br/>
 
-          <div class="separator">
+                    <div>
+                        <h1><i></i> 우리동네</h1>
+                        <p>©2023 information sharing system </p>
+                    </div>
+                </div>
+            </section>
 
-            <div class="clearfix"></div>
-            <br/>
-
-            <div>
-              <h1><i></i> 우리동네</h1>
-              <p>©2023 information sharing system </p>
             </div>
-          </div>
-        </form>
-      </section>
+        </div>
+
+
     </div>
-  </div>
 </div>
 </body>
 
