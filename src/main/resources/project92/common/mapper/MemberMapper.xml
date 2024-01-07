@@ -7,10 +7,7 @@
 
     <resultMap id="memberResultMap" type="Member">
         <result property="id" column="ID" />
-        <result property="adminId" column="ADMIN_ID" />
-        <result property="managerId" column="MANAGER_ID" />
         <result property="password" column="PASSWORD" />
-        <result property="company" column="COMPANY" />
         <result property="name" column="NAME" />
         <result property="email" column="EMAIL" />
         <result property="mobile" column="MOBILE" />
@@ -18,6 +15,7 @@
         <result property="status" column="STATUS" />
         <result property="rdate" column="RDATE" />
         <result property="ldate" column="LDATE" />
+        <result property="auth" column="AUTH" />
     </resultMap>
 
 

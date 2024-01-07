@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-			xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <div id="topNavi" class="top_nav" th:fragment="topNaviFragment">
 
@@ -10,9 +9,6 @@
 		</div>
 		<nav class="nav navbar-nav">
 			<ul class="navbar-right">
-				<li class="nav-item" style="padding-left: 15px;">
-					<a th:href="@{/profile}" class="btn btn-sm btn-primary">회원정보 수정</a>
-				</li>
 				<li class="nav-item" style="padding-left: 15px;">
 					<a th:href="@{/login}" class="btn btn-sm btn-danger">로그인</a>
 				</li>

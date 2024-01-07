@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <div class="main_menu_side hidden-print main_menu" id="sidebar-menu" th:fragment="sidebarFragment">
 
@@ -13,13 +12,13 @@
     </ul>
   </div>
 
-  <div class="menu_section" sec:authorize="hasRole('MANAGER')">
+  <div class="menu_section">
     <ul class="nav side-menu">
       <li><a href="#" th:href="@{/manager}"><i class="fa fa-dashboard"></i> 동네공유</a></li>
     </ul>
   </div>
 
-  <div class="menu_section" sec:authorize="hasRole('SUPPLIER')">
+  <div class="menu_section">
     <ul class="nav side-menu">
       <li><a href="#" th:href="@{/supplier}"><i class="fa fa-dashboard"></i> 동네공유</a></li>
     </ul>

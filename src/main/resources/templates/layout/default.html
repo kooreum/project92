@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -34,7 +33,7 @@
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
                     <a th:href="@{/}" class="site_title">
-						<img src="/images/icons8-회원-48.png" alt="아이콘">
+                        <img src="/images/icons8-회원-48.png" alt="아이콘">
                         <span>우리동네공유</span>
                     </a>
                 </div>
@@ -58,6 +57,7 @@
         <div class="right_col" role="main">
             <div class="">
                 <th:block layout:fragment="customContent">
+                    <!--바뀌는부분-->
                 </th:block>
             </div>
         </div>
