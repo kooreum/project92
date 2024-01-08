@@ -15,14 +15,14 @@
                 <div class="x_panel">
 
                     <div class="x_content">
-                        <form class="" action="" method="post" novalidate>
+                        <form class="" th:action="@{/member/signUp}" method="post" novalidate>
 
                             <span class="section">회원가입</span>
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">ID<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control" data-validate-length-range="6" data-validate-words="2"
-                                           name="id" required="required"/>
+                                           name="login_id" required="required"/>
                                 </div>
                             </div>
                             <div class="field item form-group">
@@ -40,33 +40,19 @@
 												</span>
                                 </div>
                             </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Repeat password<span
-                                        class="required">*</span></label>
-                                <div class="col-md-6 col-sm-6">
-                                    <input class="form-control" type="password" name="password2"
-                                           data-validate-linked='password' required='required'/></div>
-                            </div>
+<!--                            <div class="field item form-group">-->
+<!--                                <label class="col-form-label col-md-3 col-sm-3  label-align">Repeat password<span-->
+<!--                                        class="required">*</span></label>-->
+<!--                                <div class="col-md-6 col-sm-6">-->
+<!--                                    <input class="form-control" type="password" name="password2"-->
+<!--                                           data-validate-linked='password' required='required'/></div>-->
+<!--                            </div>-->
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">name<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control" data-validate-length-range="6" data-validate-words="2"
                                            name="name" required="required"/>
                                 </div>
-                            </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">email<span
-                                    class="required">*</span></label>
-                                <div class="col-md-6 col-sm-6">
-                                    <input class="form-control email" name="email" required="required"
-                                    type="email"/></div>
-                            </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Telephone<span
-                                        class="required">*</span></label>
-                                <div class="col-md-6 col-sm-6">
-                                    <input class="form-control tel" type="tel" name="mobile" required='required'
-                                           data-validate-length-range="8,20"/></div>
                             </div>
                             <div class="ln_solid">
                                 <div class="form-group">

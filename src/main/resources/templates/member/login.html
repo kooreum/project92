@@ -32,7 +32,6 @@
         }
     </style>
 </head>
-
 <!-- jQuery -->
 <script th:src="@{/vendors/jquery/dist/jquery.min.js}"></script>
 <!-- Bootstrap -->
@@ -65,14 +64,11 @@
 
 <body>
 <div>
-    <a class="hiddenanchor" id="signup"></a>
-    <a class="hiddenanchor" id="signin"></a>
-
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
+                <h1>로그인</h1>
                 <form method="post" th:action="@{/auth/login}">
-                    <h1>로그인</h1>
                     <div>
                         <input class="form-control" name="id" placeholder="아이디" required="" type="text" value="admin"/>
                     </div>
@@ -85,7 +81,7 @@
                     </div>
                 </form>
                 <div>
-                    <button class="btn btn-primary w-100" th:onclick="|location.href='@{/signUp}'|">회원가입</button>
+                    <button class="btn btn-primary w-100" th:onclick="|location.href='@{/member/signUp}'|">회원가입</button>
                 </div>
                 <div>
                     <button class="btn btn-primary w-100" th:onclick="|location.href='@{/signUp}'|">비밀번호 찾기</button>
@@ -103,13 +99,10 @@
                     </div>
                 </div>
             </section>
-
-            </div>
         </div>
-
-
     </div>
 </div>
+
 </body>
 
 </html>
