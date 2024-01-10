@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout/default}">
+	<head>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/pjc.css}"/>
+	</head>
+	<th:block layout:fragment="customContent">
+
+		<table>
+			<thead>
+			<tr>
+				<th>작성자</th>
+				<th>동네</th>
+				<th>제목</th>
+				<th>등록일시</th>
+				<th></th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:unless="${List == null}" th:each=" l : ${List}">
+				<td th:text="${Id}"></td>
+				<td th:text="${Town}"></td>
+				<td th:text="${Sub}"></td>
+				<td th:text="${Reg}"></td>
+
+				<td>
+					<a th:href="@{/admin/ingredient/modifyIngredient(ingredientCode=${l.ingredientCode})}">수정</a>
+				</td>
+				<td>
+					<a th:href="@{/admin/ingredient/removeIngredient(ingredientCode=${l.ingredientCode})}">삭제</a>
+				</td>
+			</tr>
+			<tr th:if="${ingredientList == null}">
+				<td colspan="9">작성된 글이 없습니다.</td>
+			</tr>
+			</tbody>
+		</table>
+
+	</th:block>
+</html>
