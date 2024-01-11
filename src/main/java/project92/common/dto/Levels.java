@@ -1,4 +1,4 @@
-package project92.common.model;
+package project92.common.dto;
 
 public enum Levels {
     ADMIN,

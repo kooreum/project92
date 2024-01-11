@@ -1,4 +1,4 @@
-package project92;
+package project92.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
