@@ -16,4 +16,9 @@ public class BoardController {
 	public String foodiePage() {
 		return "foodie";
 	}
+
+	@GetMapping("/admin")
+	public String adminPage() {
+		return "admin";
+	}
 }
